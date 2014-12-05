@@ -27,3 +27,9 @@ println("GROUP BY + MIN")
 println(topTweets.groupBy(topTweets("text")).min().show())
 
 val topTweetsText = topTweets.rdd.map(row => row.getString(0))
+
+// caching
+hiveCtx.cacheTable("tweets") 
+topTweets.cache()
+hiveCtx.sql("UNCACHE TABLE tweets")
+hiveCtx.sql("CACHE TABLE tweets")
