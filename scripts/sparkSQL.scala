@@ -20,3 +20,8 @@ println("SHOW")
 println(topTweets.show())
 
 println(topTweets.select("text").show)
+println("FILTER")
+topTweets.filter("retweetCount>1").show
+println("GROUP BY + MIN")
+//also min(), max(), mean() or agg() work
+println(topTweets.groupBy(topTweets("text")).min().show())
