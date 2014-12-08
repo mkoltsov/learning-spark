@@ -18,3 +18,5 @@ val topTweets = hiveCtx.sql("SELECT text, retweetCount FROM tweets ORDER BY retw
 println(topTweets.rdd.collect())
 println("SHOW")
 println(topTweets.show())
+
+println(topTweets.select("text").show)
