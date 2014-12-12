@@ -25,3 +25,5 @@ topTweets.filter("retweetCount>1").show
 println("GROUP BY + MIN")
 //also min(), max(), mean() or agg() work
 println(topTweets.groupBy(topTweets("text")).min().show())
+
+val topTweetsText = topTweets.rdd.map(row => row.getString(0))
