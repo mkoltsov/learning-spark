@@ -14,3 +14,7 @@ val input = hiveCtx.jsonFile("testweet.json")
 input.registerTempTable("tweets")
 
 val topTweets = hiveCtx.sql("SELECT text, retweetCount FROM tweets ORDER BY retweetCount LIMIT 10")
+
+println(topTweets.rdd.collect())
+println("SHOW")
+println(topTweets.show())
