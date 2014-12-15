@@ -9,3 +9,8 @@ val hiveCtx = new HiveContext(sc)
 // Import the implicit conversions
 import hiveCtx.implicits._
 
+val input = hiveCtx.jsonFile("testweet.json")
+
+input.registerTempTable("tweets")
+
+val topTweets = hiveCtx.sql("SELECT text, retweetCount FROM tweets ORDER BY retweetCount LIMIT 10")
