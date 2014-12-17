@@ -21,3 +21,7 @@ conf.set("spark.serializer", "org.apache.spark.serializer.KryoSerializer")
 // Be strict about class registration
 conf.set("spark.kryo.registrationRequired", "true")
 conf.registerKryoClasses(Array(classOf[MyClass], classOf[MyOtherClass]))
+
+// enable the serialization debugging
+"-Dsun.io.serialization.extended DebugInfo=true"
+// available through  --driver-java-options and --executor-java-options flags to spark-submit
