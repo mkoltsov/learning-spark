@@ -14,3 +14,10 @@
 >>> lines.count()
 
 // use repartition() in case you need to reshuffle & redistribute the data
+
+// Using the Kryo serializer and registering classes
+val conf = new SparkConf()
+conf.set("spark.serializer", "org.apache.spark.serializer.KryoSerializer")
+// Be strict about class registration
+conf.set("spark.kryo.registrationRequired", "true")
+conf.registerKryoClasses(Array(classOf[MyClass], classOf[MyOtherClass]))
