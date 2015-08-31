@@ -6,3 +6,8 @@ val counts = processed.map(words=> (words(0), 1)).reduceByKey{(a,b) => a+b}
 
 println(input.toDebugString)
 println(counts.toDebugString)
+
+counts.cache()
+
+counts.collect()
+counts.collect()
