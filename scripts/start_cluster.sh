@@ -19,3 +19,9 @@ pyspark --master spark://masternode:7077
 # running app on a cluster managed by YARN
 export HADOOP_CONF_DIR="..."
 spark-submit --master yarn yourapp
+
+# the same with Mesos
+spark-submit --master mesos://masternode:5050 yourapp 
+//to run in resource restrictive mode use this
+--conf spark.mesos.coarse=true
+//more relaxed fine-grained is set to on by default
