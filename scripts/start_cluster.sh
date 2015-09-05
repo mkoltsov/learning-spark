@@ -15,3 +15,7 @@ spark-submit --master spark://masternode:7077 yourapp
 # run shell on a cluster
 spark-shell --master spark://masternode:7077
 pyspark --master spark://masternode:7077
+
+# running app on a cluster managed by YARN
+export HADOOP_CONF_DIR="..."
+spark-submit --master yarn yourapp
