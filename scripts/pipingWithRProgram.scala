@@ -20,4 +20,5 @@ sc.addFile(distScript)
 val distances = contactsContactLists.values.flatMap(x => x.map(y =>
   s"${y.contactlay},${y.contactlong},${y.mylat},${y.mylong}")).pipe(Seq(
     SparkFiles.get(distScriptName)))
+  //ALTERNATIVE SOLUTION rdd.pipe(SparkFiles.get("finddistance.R") + " ,")
 println(distances.collect().toList)
