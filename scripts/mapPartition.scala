@@ -12,3 +12,7 @@ val contactsContactLists = validSigns.distinct().mapPartitions{
   }.filter(x => x._2 != null) // Remove empty CallLogs
 }
 
+//Another per partition operations
+
+validSigns.mapPartitionsWithIndex{ind, data => }
+validSigns.foreachPartition{data => }
