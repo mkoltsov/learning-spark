@@ -11,4 +11,4 @@ val callSigns = file.flatMap(
 	})
 
 callSigns.saveAsTextFile("output.txt")
-println(s"Blank lines: $blankLines.value")
+println(s"Blank lines: $blankLines")
