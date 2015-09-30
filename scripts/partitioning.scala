@@ -1,3 +1,11 @@
+val pairs = sc.parallelize(List((1,1), (2,2), (3,3)))
+
+println(pairs.partitioner)
+
+val partitioned = pairs.partitionBy(new spark.HashPartitioner(2))
+
+println(partitioned.partitioner)
+
 //INEFFICIENT APPROACH
 
 // Initialization code; we load the user info from a Hadoop SequenceFile on HDFS.
@@ -24,3 +32,4 @@ def processNewLogs(logFileName: String) {
   }.count()
   println("Number of visits to non-subscribed topics: " + offTopicVisits)
 }
+
