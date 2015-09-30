@@ -7,6 +7,12 @@
 val sc = new SparkContext(...)
 val userData = sc.sequenceFile[UserID, UserInfo]("hdfs://...").persist()
 
+//Much more efficiently would be to partition the data
+val sc = new SparkContext(...)
+val userData = sc.sequenceFile[UserID, UserInfo]("hdfs://...")
+                 .partitionBy(new HashPartitioner(100))   // Create 100 partitions
+                 .persist()
+
 // Function called periodically to process a logfile of events in the past 5 minutes;
 // we assume that this is a SequenceFile containing (UserID, LinkInfo) pairs.
 def processNewLogs(logFileName: String) {
