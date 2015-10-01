@@ -72,5 +72,10 @@ println(rdd1.reduceByKey((x,y) => x+y).collect().mkString(","))
 println(rdd1.groupByKey().mapValues(value => value.reduce((x,y) => x+y)).collect().mkString(","))
 
 println(lines.groupBy(x => x.contains("p")).collect().mkString(","))
-
+println("joining")
 println(rdd1.cogroup(other).collect().mkString(","))
+println(rdd1.join(other).foreach(println))
+println("available with actions")
+println(rdd1.countByKey())
+println(rdd1.collectAsMap())
+println(rdd1.lookup(3))
