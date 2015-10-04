@@ -57,4 +57,6 @@ val result = rdd1.combineByKey(
 	).map{case (key, value) => (key, value._1/value._2.toFloat) }
 result.collectAsMap().map(println(_))
 
-	
+val data = Seq(("a", 3), ("b", 4), ("a", 1))
+sc.parallelize(data).reduceByKey((x, y) => x + y)    // Default parallelism
+sc.parallelize(data).reduceByKey((x, y) => x + y, 10)    // Custom parallelism
