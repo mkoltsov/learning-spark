@@ -47,3 +47,14 @@ println(input.flatMap(x => x.split(" ")).countByValue())
 println("steady")
 
 println(input.flatMap(x => x.split(" ")).map(x => (x, 1)).reduceByKey((x, y) => x+y))
+
+println("combine by key")
+
+val result = rdd1.combineByKey(
+	(v) => (v,1),
+	(acc: (Int, Int), v) => (acc._1 + v, acc._2+1),
+	(acc1: (Int, Int),acc2:(Int, Int)) => (acc1._1 + acc2._1, acc1._2 + acc2._2)
+	).map{case (key, value) => (key, value._1/value._2.toFloat) }
+result.collectAsMap().map(println(_))
+
+	
