@@ -35,3 +35,15 @@ rdd1.filter{case (key, value) => value > 3}.foreach(println)
 rdd1.mapValues(x => (x,1)).foreach(println)
 println("reducing")
 rdd1.mapValues(x => (x,1)).reduceByKey((x,y) => (x._1+y._1, x._2 + y._2)).foreach(println)
+
+println("word count")
+
+println("fast")
+
+val input = sc.textFile("../CHANGES.txt")
+
+println(input.flatMap(x => x.split(" ")).countByValue())
+
+println("steady")
+
+println(input.flatMap(x => x.split(" ")).map(x => (x, 1)).reduceByKey((x, y) => x+y))
