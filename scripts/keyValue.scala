@@ -31,3 +31,7 @@ println(rdd1.cogroup(other).foreach(println))
 println("filter upon a pair")
 
 rdd1.filter{case (key, value) => value > 3}.foreach(println)
+
+rdd1.mapValues(x => (x,1)).foreach(println)
+println("reducing")
+rdd1.mapValues(x => (x,1)).reduceByKey((x,y) => (x._1+y._1, x._2 + y._2)).foreach(println)
