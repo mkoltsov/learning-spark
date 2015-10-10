@@ -28,4 +28,6 @@ println(rdd1.join(other).foreach(println))
 //println(rdd1.rightOuterjoin(other).foreach(println))
 //println(rdd1.leftOuterjoin(other).foreach(println))
 println(rdd1.cogroup(other).foreach(println))
+println("filter upon a pair")
 
+rdd1.filter{case (key, value) => value > 3}.foreach(println)
