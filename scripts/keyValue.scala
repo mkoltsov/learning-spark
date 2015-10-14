@@ -23,4 +23,9 @@ val rdd1 = sc.parallelize(List((1,2), (3,4), (3,6)))
 val other = sc.parallelize(List((3,9)))
 
 println(rdd1.subtractByKey(other).foreach(println))
+println("joining two RDDs")
+println(rdd1.join(other).foreach(println))
+//println(rdd1.rightOuterjoin(other).foreach(println))
+//println(rdd1.leftOuterjoin(other).foreach(println))
+println(rdd1.cogroup(other).foreach(println))
 
