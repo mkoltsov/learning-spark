@@ -17,3 +17,10 @@ println(example.flatMapValues(x => (x to 5)).foreach(println))
 //println(example.values())
 println(example.sortByKey().foreach(println))
 
+println("transformation on two pairs")
+
+val rdd1 = sc.parallelize(List((1,2), (3,4), (3,6)))
+val other = sc.parallelize(List((3,9)))
+
+println(rdd1.subtractByKey(other).foreach(println))
+
