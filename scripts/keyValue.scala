@@ -13,5 +13,7 @@ println(example.groupByKey().foreach(println))
 println(example.mapValues(x => x+1).foreach(println))
 println("flatMapValues")
 println(example.flatMapValues(x => (x to 5)).foreach(println))
-
+//println(example.keys())
+//println(example.values())
+println(example.sortByKey().foreach(println))
 
