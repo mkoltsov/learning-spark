@@ -16,3 +16,11 @@ println(rdd1.countByValue())
 println(rdd1.mean())
 println(rdd1.variance())
 //println(rdd1.takeOrdered(3)((x:Int, y:Int) => (x<y)))
+
+println("PERSISTANCE")
+
+val result = rdd1.map(x=>x*x)
+result.persist(StorageLevel.DISK_ONLY)
+result.unpersist()
+println(result.count())
+println(result.collect().mkString(","))
