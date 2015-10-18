@@ -1,4 +1,4 @@
-val rdd1 = sc.parallelize(List(1,2,3,4,5))
+val rdd1 = sc.parallelize(List(1,1,2,3,4,5))
 
 println(rdd1.reduce((x,y) => x+y))
 
@@ -10,3 +10,9 @@ println(rdd1.fold(-1)((x,y) => x+y))
 
 println(rdd1.top(3).mkString(","))
 println(rdd1.takeSample(true, 3, 0).mkString(","))
+rdd1.foreach(println)
+println(rdd1.count())
+println(rdd1.countByValue())
+println(rdd1.mean())
+println(rdd1.variance())
+//println(rdd1.takeOrdered(3)((x:Int, y:Int) => (x<y)))
