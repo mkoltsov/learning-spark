@@ -1,0 +1,15 @@
+val rdd1 = sc.parallelize(List("chef","chef", "pupa", "papa"))
+val rdd2 = sc.parallelize(List("bupa", "diop","pupa", "ser"))
+
+val un = rdd2.union(rdd2)
+
+println("unique")
+println(rdd1.distinct().collect().mkString(","))
+println("union")
+println(rdd1.union(rdd2).collect().mkString(","))
+println("intersect")
+println(rdd1.intersection(rdd2).collect().mkString(","))
+println("subtract")
+println(rdd1.subtract(rdd2).collect().mkString(","))
+println("cartesian produce")
+println(rdd1.cartesian(rdd2).collect().mkString(";"))
