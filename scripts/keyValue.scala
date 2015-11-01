@@ -8,4 +8,5 @@ sc.parallelize(List(("chef", "pupa"), ("papa", "bupa"))).collect().foreach(print
 val example = sc.parallelize(List((1,2), (3,4),(3,6)))
 
 println(example.reduceByKey((x,y) => x+y).foreach(println))
+println(example.groupByKey().foreach(println))
 
