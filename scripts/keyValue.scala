@@ -66,3 +66,6 @@ val repart = rdd1.repartition(20)
 println(repart.partitions.size)
 val coalesced = rdd1.coalesce(20, true)
 println(coalesced.partitions.size)
+
+println(rdd1.groupByKey().collect().mkString(","))
+println(rdd1.reduceByKey((x,y) => x+y).collect().mkString(","))
