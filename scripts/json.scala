@@ -9,6 +9,7 @@ val input = "{'name':'chef', 'lovesPandas':true}"
 // Parse it into a specific case class. We use flatMap to handle errors
 // by returning an empty list (None) if we encounter an issue and a
 // list with one element if everything is ok (Some(_)).
+//---------------Reading a JSON
 // val mapper = new ObjectMapper() with ScalaObjectMapper
 // mapper.registerModule(DefaultScalaModule)
 
@@ -18,3 +19,6 @@ val input = "{'name':'chef', 'lovesPandas':true}"
 //   } catch {
 //     case e: Exception => None
 //   }})
+//-----------------writing to a JSON file
+result.filter(p => P.lovesPandas).map(mapper.writeValueAsString(_))
+  .saveAsTextFile(outputFile)
