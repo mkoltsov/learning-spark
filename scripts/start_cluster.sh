@@ -8,3 +8,10 @@ Enter same passphrase again: [EMPTY]
 # copy ~/.ssh/id_dsa.pub from your master to the worker, then use:
 $ cat ~/.ssh/id_dsa.pub >> ~/.ssh/authorized_keys
 $ chmod 644 ~/.ssh/authorized_keys
+
+//submit app
+spark-submit --master spark://masternode:7077 yourapp
+
+# run shell on a cluster
+spark-shell --master spark://masternode:7077
+pyspark --master spark://masternode:7077
