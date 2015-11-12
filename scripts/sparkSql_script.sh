@@ -1,0 +1,1 @@
+EXPLAIN SELECT * FROM mytable where key = 1;
