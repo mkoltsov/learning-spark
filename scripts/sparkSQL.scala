@@ -33,3 +33,8 @@ hiveCtx.cacheTable("tweets")
 topTweets.cache()
 hiveCtx.sql("UNCACHE TABLE tweets")
 hiveCtx.sql("CACHE TABLE tweets")
+println(topTweets.printSchema())
+println(input.printSchema())
+
+// SQL query nested and array elements
+select hashtagEntities[0].text from tweets LIMIT 1;
