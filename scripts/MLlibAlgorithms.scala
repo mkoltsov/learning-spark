@@ -73,3 +73,29 @@ println("weights: %s, intercept: %s".format(model.weights, model.intercept))
 
 // Dimensionality Reduction
 // Principal component analysis
+
+// PCA in Scala
+import org.apache.spark.mllib.linalg.Matrix
+import org.apache.spark.mllib.linalg.distributed.RowMatrix
+
+val points: RDD[Vector] = // ...
+val mat: RowMatrix = new RowMatrix(points)
+val pc: Matrix = mat.computePrincipalComponents(2)
+
+// Project points to low-dimensional space
+val projected = mat.multiply(pc).rows
+
+// Train a k-means model on the projected 2-dimensional data
+val model = KMeans.train(projected, 10)
+
+// SVD in Scala
+// Compute the top 20 singular values of a RowMatrix mat and their singular vectors.
+val svd: SingularValueDecomposition[RowMatrix, Matrix] =
+  mat.computeSVD(20, computeU=true)
+
+val U: RowMatrix = svd.U  // U is a distributed RowMatrix.
+val s: Vector = svd.s     // Singular values are a local dense vector.
+val V: Matrix = svd.V     // V is a local dense matrix.
+
+// Model Evaluation
+// use mllib.evaluation package, BinaryClassificationMetrics and MulticlassMetrics are the perfect classes for this job
